@@ -12,7 +12,7 @@ import Turnstile
 public class TurnstileFilter {
     fileprivate let turnstile: Turnstile
     
-    init(turnstile: Turnstile) {
+    public init(turnstile: Turnstile) {
         self.turnstile = turnstile
     }
 }
