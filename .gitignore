@@ -2,3 +2,6 @@
 /.build
 /Packages
 /*.xcodeproj
+buildlinux
+Package.swift.orig
+/.packages_lin
