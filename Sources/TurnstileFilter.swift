@@ -9,6 +9,7 @@
 import PerfectHTTP
 import Turnstile
 
+/// The filter container class for Turnstile
 public class TurnstileFilter {
     fileprivate let turnstile: Turnstile
     
@@ -17,8 +18,10 @@ public class TurnstileFilter {
     }
 }
 
+/// Adds Request Filter capacity to TurnstileFilter
 extension TurnstileFilter: HTTPRequestFilter {
 
+	/// Checks for required filter check, and filter routing.
     public func filter(request: HTTPRequest, response: HTTPResponse, callback: (HTTPRequestFilterResult) -> ()) {
         // Initialize session
         // Token/API Key Auth
@@ -35,9 +38,10 @@ extension TurnstileFilter: HTTPRequestFilter {
     }
 }
 
+/// Adds Response Filter capacity to TurnstileFilter
 extension TurnstileFilter: HTTPResponseFilter {
 
-    /// Called once before headers are sent to the client.
+    /// Called once before headers are sent to the client. If needed, sets the cookie with the session id.
     public func filterHeaders(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
         if let sessionID = response.request.user.authDetails?.sessionID {
             response.addCookie(HTTPCookie(name: "TurnstileSession",

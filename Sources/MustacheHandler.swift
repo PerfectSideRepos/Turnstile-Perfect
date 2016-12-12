@@ -9,6 +9,7 @@
 import PerfectMustache
 import PerfectHTTP
 
+/// Adds a MustacheHandler shortcut/convenience method
 public struct MustacheHandler: MustachePageHandler {
 	var context: [String: Any]
 	public func extendValuesForResponse(context contxt: MustacheWebEvaluationContext, collector: MustacheEvaluationOutputCollector) {
@@ -30,6 +31,7 @@ public struct MustacheHandler: MustachePageHandler {
 }
 
 
+/// Adds a render shortcut/convenience extension to HTTPResponse for handling mustache templates 
 extension HTTPResponse {
 	public func render(template: String, context: [String: Any] = [String: Any]()) {
 		mustacheRequest(request: self.request, response: self, handler: MustacheHandler(context: context), templatePath: request.documentRoot + "/views/\(template).mustache")

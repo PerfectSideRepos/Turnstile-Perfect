@@ -9,15 +9,20 @@
 import PerfectHTTP
 import SwiftString
 
-
+/// Contains the filtering mechanism for determining valid authentication on routes.
 public struct AuthFilter: HTTPRequestFilter {
+
+	/// The authentication configuration. Holds the routes to be included or excluded
 	var authenticationConfig = AuthenticationConfig()
 
+	/// Accept an auth config via init.
 	public init(_ cfg: AuthenticationConfig) {
 		authenticationConfig = cfg
 	}
 
+	/// Perform the filtering, with a callback allowing continuation of request, or galting immediately.
 	public func filter(request: HTTPRequest, response: HTTPResponse, callback: (HTTPRequestFilterResult) -> ()) {
+
 		//		guard let denied = authenticationConfig.denied else {
 		//			callback(.continue(request, response))
 		//			return
