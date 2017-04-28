@@ -20,7 +20,7 @@ public struct AuthFilter: HTTPRequestFilter {
 		authenticationConfig = cfg
 	}
 
-	/// Perform the filtering, with a callback allowing continuation of request, or galting immediately.
+	/// Perform the filtering, with a callback allowing continuation of request, or halting immediately.
 	public func filter(request: HTTPRequest, response: HTTPResponse, callback: (HTTPRequestFilterResult) -> ()) {
 
 		//		guard let denied = authenticationConfig.denied else {
