@@ -5,3 +5,4 @@
 buildlinux
 Package.swift.orig
 /.packages_lin
+Package.pins
